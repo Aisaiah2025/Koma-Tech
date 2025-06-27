@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our IT Services | KOMA Tech Solution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ===== Global Styles ===== */
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003366;
+            --secondary: #6c757d;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --warning: #ffc107;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding-top: 80px;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== Header ===== */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 60px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-text span {
+            color: var(--warning);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--warning);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ===== Services Hero ===== */
+        .services-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .services-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* ===== Services Section ===== */
+        .services-section {
+            padding: 50px 0;
+        }
+
+        .service-category {
+            margin-bottom: 60px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-category-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .service-category-header i {
+            font-size: 2rem;
+        }
+
+        .service-category-header h2 {
+            font-size: 1.8rem;
+        }
+
+        .service-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .service-item {
+            border-left: 3px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .service-item h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .service-item p {
+            margin-bottom: 15px;
+        }
+
+        .service-item ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .service-item li {
+            margin-bottom: 8px;
+        }
+
+        /* ===== CTA Section ===== */
+        .cta-section {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ===== Mobile Responsiveness ===== */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                margin-top: 15px;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+
+            .services-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .service-items {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== Header ===== -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <img src="Koma.png" alt="KOMA Tech Solution" class="logo-img">
+                <div class="logo-text">KOMA <span>Tech</span> Solution</div>
+            </div>
+            
+            <nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="consult.html">Consult</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== Services Hero ===== -->
+    <section class="services-hero">
+        <div class="services-hero-content">
+            <h1>Our Professional IT Services</h1>
+            <p>Comprehensive technology solutions tailored to your business needs</p>
+        </div>
+    </section>
+
+    <!-- ===== Services Section ===== -->
+    <main class="services-section">
+        <div class="container">
+            <!-- Network Solutions -->
+            <div class="service-category">
+                <div class="service-category-header">
+                    <i class="fas fa-network-wired"></i>
+                    <h2>Network Solutions</h2>
+                </div>
+                <div class="service-items">
+                    <div class="service-item">
+                        <h3>Office LAN Setup</h3>
+                        <p>Complete wired and wireless network infrastructure installation</p>
+                        <ul>
+                            <li>Router/switch configuration</li>
+                            <li>Structured cabling</li>
+                            <li>Network security implementation</li>
+                            <li>Wireless access point installation</li>
+                        </ul>
+                    </div>
+                    <div class="service-item">
+                        <h3>Network Security</h3>
+                        <p>Protect your business from cyber threats</p>
+                        <ul>
+                            <li>Firewall installation</li>
+                            <li>VPN setup</li>
+                            <li>Intrusion prevention</li>
+                            <li>Security audits</li>
+                        </ul>
+                    </div>
+                    <div class="service-item">
+                        <h3>Network Monitoring</h3>
+                        <p>24/7 monitoring of your network infrastructure</p>
+                        <ul>
+                            <li>Real-time alerts</li>
+                            <li>Performance analytics</li>
+                            <li>Bandwidth management</li>
+                            <li>Incident response</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Development -->
+            <div class="service-category">
+                <div class="service-category-header">
+                    <i class="fas fa-code"></i>
+                    <h2>Web Development</h2>
+                </div>
+                <div class="service-items">
+                    <div class="service-item">
+                        <h3>Custom Website Development</h3>
+                        <p>Tailored web solutions for your business</p>
+                        <ul>
+                            <li>Responsive design</li>
+                            <li>E-commerce integration</li>
+                            <li>Content management systems</li>
+                            <li>SEO optimization</li>
+                        </ul>
+                    </div>
+                    <div class="service-item">
+                        <h3>Web Application Development</h3>
+                        <p>Custom web applications to streamline your operations</p>
+                        <ul>
+                            <li>Database integration</li>
+                            <li>User authentication</li>
+                            <li>API development</li>
+                            <li>Cloud deployment</li>
+                        </ul>
+                    </div>
+                    <div class="service-item">
+                        <h3>Website Maintenance</h3>
+                        <p>Ongoing support for your website</p>
+                        <ul>
+                            <li>Regular updates</li>
+                            <li>Security patches</li>
+                            <li>Backup solutions</li>
+                            <li>Performance optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inventory Management Systems -->
+            <div class="service-category">
+                <div class="service-category-header">
+                    <i class="fas fa-warehouse"></i>
+                    <h2>Inventory Management Systems</h2>
+                </div>
+                <div class="service-items">
+                    <div class="service-item">
+                        <h3>Custom Inventory Solutions</h3>
+                        <p>Efficient inventory management for small and medium enterprises</p>
+                        <ul>
+                            <li>Real-time tracking</li>
+                            <li>Automated stock alerts</li>
+                            <li>Reporting and analytics</li>
+                            <li>Integration with e-commerce platforms</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smartphone Bypass Services -->
+            <div class="service-category">
+                <div class="service-category-header">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h2>Smartphone Bypass Services</h2>
+                </div>
+                <div class="service-items">
+                    <div class="service-item">
+                        <h3>Bypass for Smartphones/Android Phones</h3>
+                        <p>Unlock your device and bypass Wi-Fi and Google account passwords</p>
+                        <ul>
+                            <li>Safe and secure unlocking</li>
+                            <li>Bypass Google account verification</li>
+                            <li>Wi-Fi password recovery</li>
+                            <li>Device compatibility checks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== CTA Section ===== -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today for a free consultation and quote</p>
+            <a href="contact.html" class="btn">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="logo-container">
+                        <img src="Koma.png" alt="KOMA Tech Solution" class="logo-img" style="height: 35px;">
+                        <div class="logo-text">KOMA <span>Tech</span> Solution</div>
+                    </div>
+                    <p style="margin-top: 15px;">Your trusted partner for comprehensive IT solutions and services.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="consult.html">Consultation</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html">Network Setup</a></li>
+                        <li><a href="services.html">Web Development</a></li>
+                        <li><a href="services.html">Computer Repair</a></li>
+                        <li><a href="services.html">IT Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@komatechsolution.com</li>
+                        <li><i class="fas fa-phone"></i> +675 7473 9925 || 8174 1111 </li>
+                        <li><i class="fas fa-map-marker-alt"></i> East Boroko Street, Caritas School</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 KOMA Tech Solution. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JavaScript ===== -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('show');
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
